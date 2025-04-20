@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .payment-methods label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .payment-methods img {
+            width: 30px;
+            height: 30px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Checkout</h2>
+        <form id="checkout-form">
+            <div class="billing-details">
+                <h3>Billing Address</h3>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+                
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+                
+                <label for="city">City</label>
+                <select id="city" required>
+                    <option value="">Select City</option>
+                    <option value="New York">New York</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Chicago">Chicago</option>
+                </select>
+                
+                <label for="zip">ZIP Code</label>
+                <input type="text" id="zip" required>
+            </div>
+            
+            <div class="payment-options">
+                <h3>Payment Method</h3>
+                <div class="payment-methods">
+                    <label>
+                        <input type="radio" name="payment" value="credit-card" required>
+                        <img src="credit-card.png" alt="Credit Card"> Credit Card
+                    </label>
+                    <label>
+                        <input type="radio" name="payment" value="debit-card">
+                        <input type="label" name="card number" value="">
+                        <input type="label" name="card holder name" value="">
+                        <input type="label" name="MM/YY">
+                        <input type="label" name="cvv">
+
+                        
+
+
+
+
+                        <img src="debit-card.png" alt="Debit Card"> Debit Card
+                    </label>
+                    <label>
+                        <input type="radio" name="payment" value="phonepe">
+                        <img src="phonepe.png" alt="PhonePe"> PhonePe
+                    </label>
+                    <label>
+                        <input type="radio" name="payment" value="gpay">
+                        <img src="gpay.png" alt="Google Pay"> Google Pay
+                    </label>
+                    <label>
+                        <input type="radio" name="payment" value="razorpay">
+                        <img src="razorpay.png" alt="Razorpay"> Razorpay
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let city = document.getElementById('city').value;
+            let zip = document.getElementById('zip').value;
+            let payment = document.querySelector('input[name="payment"]:checked');
+            
+            if (!name || !email || !city || !zip || !payment) {
+                alert('Please fill all fields and select a payment method.');
+                return;
+            }
+            
+            alert('Payment successful!');
+        });
+    </script>
+</body>
+</html>
